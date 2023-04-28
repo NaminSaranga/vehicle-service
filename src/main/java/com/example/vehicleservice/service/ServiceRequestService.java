@@ -15,6 +15,11 @@ public class ServiceRequestService {
             "engine", 1000.0
     );
 
+    /**
+     * @author Namin Saranga
+     * @param serviceRequirements
+     * @return
+     */
     public Double calculatePrice(List<String> serviceRequirements) {
         return serviceRequirements.stream()
                 .mapToDouble(prices::get)

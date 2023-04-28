@@ -20,6 +20,11 @@ public class ServiceRequestController {
     @Autowired
     private ServiceRequestService serviceRequestService;
 
+    /**
+     * @author Namin Saranga
+     * @param serviceRequest
+     * @return
+     */
     @PostMapping
     public ResponseEntity<String> createServiceRequest(@RequestBody ServiceRequest serviceRequest) {
         serviceRequest.setPrice(serviceRequestService.calculatePrice(serviceRequest.getServiceRequirement()));
@@ -27,6 +32,11 @@ public class ServiceRequestController {
         return ResponseEntity.ok("Service request has been successfully created!");
     }
 
+    /**
+     * @author Namin Saranga
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public ResponseEntity<ServiceRequest> getServiceRequestById(@PathVariable Long id) {
         Optional<ServiceRequest> optionalServiceRequest = serviceRequestRepository.findById(id);
@@ -38,12 +48,22 @@ public class ServiceRequestController {
         }
     }
 
+    /**
+     * @author Namin Saranga
+     * @return
+     */
     @GetMapping
     public ResponseEntity<List<ServiceRequest>> getAllServiceRequests() {
         List<ServiceRequest> serviceRequests = serviceRequestRepository.findAll();
         return ResponseEntity.ok(serviceRequests);
     }
 
+    /**
+     * @author Namin Saranga
+     * @param id
+     * @param updatedServiceRequest
+     * @return
+     */
     @PutMapping("/{id}")
     public ResponseEntity<String> updateServiceRequest(@PathVariable Long id, @RequestBody ServiceRequest updatedServiceRequest) {
         Optional<ServiceRequest> optionalServiceRequest = serviceRequestRepository.findById(id);
@@ -63,6 +83,11 @@ public class ServiceRequestController {
         }
     }
 
+    /**
+     * @author Namin Saranga
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteServiceRequest(@PathVariable Long id) {
         Optional<ServiceRequest> optionalServiceRequest = serviceRequestRepository.findById(id);
