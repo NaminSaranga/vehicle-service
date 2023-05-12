@@ -33,6 +33,8 @@ public class ServiceRequest {
     private String phone;
 
     private Double price;
+
+    //private
 }
 
 
